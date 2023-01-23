@@ -1,10 +1,10 @@
 {
   "files": {
-    "main.js": "/gwon-innovation/My3DRoom.git/static/js/main.47d636fb.js",
-    "index.html": "/gwon-innovation/My3DRoom.git/index.html",
-    "main.47d636fb.js.map": "/gwon-innovation/My3DRoom.git/static/js/main.47d636fb.js.map"
+    "main.js": "/gwon-innovation/My3DRoom/static/js/main.e0de3818.js",
+    "index.html": "/gwon-innovation/My3DRoom/index.html",
+    "main.e0de3818.js.map": "/gwon-innovation/My3DRoom/static/js/main.e0de3818.js.map"
   },
   "entrypoints": [
-    "static/js/main.47d636fb.js"
+    "static/js/main.e0de3818.js"
   ]
 }
