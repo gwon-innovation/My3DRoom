@@ -1,4 +1,5 @@
 {
+  "homepage": "https://gwon-innovation.github.io/My3DRoom",
   "name": "my3droom",
   "version": "0.1.0",
   "private": true,
@@ -22,6 +23,8 @@
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
+    "predeploy": "yarn build",
+    "deploy": "gh-pages -d build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
     "lint": "eslint './src/**/*.{ts,tsx,js,jsx}'",
