@@ -19,6 +19,16 @@ export default function Home() {
     src: "",
     color: "#FFFFFF"
   });
+  const [leftWallStyle, setLeftWallStyle] = useState<IPlaneStyle>({
+    name: "",
+    src: "",
+    color: "#FFFFFF"
+  });
+  const [frontWallStyle, setFrontWallStyle] = useState<IPlaneStyle>({
+    name: "",
+    src: "",
+    color: "#FFFFFF"
+  });
 
   const containerStyle = css({
     width: "100%",
@@ -31,6 +41,14 @@ export default function Home() {
     <div css={containerStyle}>
       <Controller
         floorProps={{ floorXZ, setFloorXZ, planeStyle, setPlaneStyle }}
+        leftWallProps={{
+          planeStyle: leftWallStyle,
+          setPlaneStyle: setLeftWallStyle
+        }}
+        frontWallProps={{
+          planeStyle: frontWallStyle,
+          setPlaneStyle: setFrontWallStyle
+        }}
       />
       <Canvas
         camera={{ position: [2, 4, 3.5] }}
@@ -40,8 +58,8 @@ export default function Home() {
         <ambientLight intensity={0.1} />
         <TopLight />
 
-        <WallLeft floorXZ={floorXZ} />
-        <WallFront floorXZ={floorXZ} />
+        <WallLeft floorXZ={floorXZ} planeStyle={leftWallStyle} />
+        <WallFront floorXZ={floorXZ} planeStyle={frontWallStyle} />
         <Floor floorXZ={floorXZ} planeStyle={planeStyle} />
       </Canvas>
     </div>
