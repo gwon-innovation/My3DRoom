@@ -1,2 +1,2 @@
 export * from "./IFloorArea";
-export * from "./IFloorStyle";
+export * from "./IPlaneStyle";
