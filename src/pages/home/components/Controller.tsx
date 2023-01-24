@@ -14,7 +14,7 @@ export function Controller({ floorProps }: ControllerProps) {
     marginLeft: "auto",
     padding: "1.2rem",
     boxSizing: "border-box",
-    width: "20rem",
+    width: "24rem",
     height: "50%",
     background: "#343434",
     borderRadius: "1rem",
