@@ -25,6 +25,7 @@ export default function Home() {
     <div css={containerStyle}>
       <Canvas camera={{ position: [2, 4, 3.5] }}>
         <OrbitControls />
+        <ambientLight intensity={0.1} />
         <TopLight />
 
         <WallLeft floorXZ={floorXZ} />
