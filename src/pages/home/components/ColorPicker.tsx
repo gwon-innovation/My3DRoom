@@ -4,14 +4,14 @@
 import { css } from "@emotion/react";
 import { Dispatch, SetStateAction, useState } from "react";
 import { ChromePicker } from "react-color";
-import { IFloorStyle } from "models";
+import { IPlaneStyle } from "models";
 
 export interface IColorPickerProps {
-  floorStyle: IFloorStyle;
-  setFloorStyle: Dispatch<SetStateAction<IFloorStyle>>;
+  planeStyle: IPlaneStyle;
+  setPlaneStyle: Dispatch<SetStateAction<IPlaneStyle>>;
 }
 
-export function ColorPicker({ floorStyle, setFloorStyle }: IColorPickerProps) {
+export function ColorPicker({ planeStyle, setPlaneStyle }: IColorPickerProps) {
   const [showColorPicker, setShowColorPicker] = useState<boolean>(false);
 
   const handleClick = () => {
@@ -22,7 +22,7 @@ export function ColorPicker({ floorStyle, setFloorStyle }: IColorPickerProps) {
   };
   // eslint-disable-next-line @typescript-eslint/no-shadow
   const handleChange = (color: any) => {
-    setFloorStyle({ name: "", src: "", color: color.hex });
+    setPlaneStyle({ name: "", src: "", color: color.hex });
   };
 
   const buttonStyle = css({
@@ -30,7 +30,7 @@ export function ColorPicker({ floorStyle, setFloorStyle }: IColorPickerProps) {
     height: "3rem",
     padding: 0,
     border: "none",
-    background: floorStyle.color
+    background: planeStyle.color
   });
   const buttonSelectedStyle = css(buttonStyle, {
     border: "4px solid #FFFFFF"
@@ -38,7 +38,7 @@ export function ColorPicker({ floorStyle, setFloorStyle }: IColorPickerProps) {
   const popoverStyle = css({
     position: "relative",
     top: "4rem",
-    left: "-3rem"
+    left: "-4rem"
   });
   const coverStyle = css({
     position: "fixed",
@@ -52,13 +52,13 @@ export function ColorPicker({ floorStyle, setFloorStyle }: IColorPickerProps) {
     <button
       onClick={handleClick}
       type="button"
-      css={floorStyle.name ? buttonStyle : buttonSelectedStyle}
+      css={planeStyle.name ? buttonStyle : buttonSelectedStyle}
     >
       {showColorPicker ? (
         <div css={popoverStyle}>
           <div onClick={handleClose} css={coverStyle} />
           <ChromePicker
-            color={floorStyle.color ? floorStyle.color : "white"}
+            color={planeStyle.color ? planeStyle.color : "white"}
             onChange={handleChange}
           />
         </div>

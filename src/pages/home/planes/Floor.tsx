@@ -1,18 +1,18 @@
 /* eslint-disable react/no-unknown-property */
-import { IFloorArea, IFloorStyle } from "models";
+import { IFloorArea, IPlaneStyle } from "models";
 import * as THREE from "three";
 import { useLoader } from "@react-three/fiber";
 import { THICKNESS } from "./Options";
 
 interface FloorProps {
   floorXZ: IFloorArea;
-  floorStyle: IFloorStyle;
+  planeStyle: IPlaneStyle;
 }
 
-function FloorWithImage({ floorXZ, floorStyle }: FloorProps) {
+function FloorWithImage({ floorXZ, planeStyle }: FloorProps) {
   const colorMap = useLoader(
     THREE.TextureLoader,
-    floorStyle.src
+    planeStyle.src
   ) as THREE.Texture;
   return (
     <mesh position={[0, 0, 0]}>
@@ -27,9 +27,9 @@ function FloorWithImage({ floorXZ, floorStyle }: FloorProps) {
   );
 }
 
-export function Floor({ floorXZ, floorStyle }: FloorProps) {
-  if (floorStyle.name) {
-    return <FloorWithImage floorXZ={floorXZ} floorStyle={floorStyle} />;
+export function Floor({ floorXZ, planeStyle }: FloorProps) {
+  if (planeStyle.name) {
+    return <FloorWithImage floorXZ={floorXZ} planeStyle={planeStyle} />;
   }
   return (
     <mesh position={[0, 0, 0]}>
@@ -38,7 +38,7 @@ export function Floor({ floorXZ, floorStyle }: FloorProps) {
         attach="material"
         roughness={0.5}
         metalness={0.5}
-        color={floorStyle.color}
+        color={planeStyle.color}
       />
     </mesh>
   );

@@ -4,7 +4,7 @@ import { css } from "@emotion/react";
 import { useState } from "react";
 import { Canvas } from "@react-three/fiber";
 import { OrbitControls } from "@react-three/drei";
-import { IFloorArea, IFloorStyle } from "models";
+import { EMPTY_PLANE_STYLE, IFloorArea, IPlaneStyle } from "models";
 import { Floor, WallFront, WallLeft } from "./planes";
 import { TopLight } from "./lights";
 import { Controller } from "./components";
@@ -14,11 +14,11 @@ export default function Home() {
     x: 3,
     z: 2.6
   });
-  const [floorStyle, setFloorStyle] = useState<IFloorStyle>({
-    name: "",
-    src: "",
-    color: "#FFFFFF"
-  });
+  const [floorStyle, setFloorStyle] = useState<IPlaneStyle>(EMPTY_PLANE_STYLE);
+  const [leftWallStyle, setLeftWallStyle] =
+    useState<IPlaneStyle>(EMPTY_PLANE_STYLE);
+  const [frontWallStyle, setFrontWallStyle] =
+    useState<IPlaneStyle>(EMPTY_PLANE_STYLE);
 
   const containerStyle = css({
     width: "100%",
@@ -30,7 +30,20 @@ export default function Home() {
   return (
     <div css={containerStyle}>
       <Controller
-        floorProps={{ floorXZ, setFloorXZ, floorStyle, setFloorStyle }}
+        floorProps={{
+          floorXZ,
+          setFloorXZ,
+          planeStyle: floorStyle,
+          setPlaneStyle: setFloorStyle
+        }}
+        leftWallProps={{
+          planeStyle: leftWallStyle,
+          setPlaneStyle: setLeftWallStyle
+        }}
+        frontWallProps={{
+          planeStyle: frontWallStyle,
+          setPlaneStyle: setFrontWallStyle
+        }}
       />
       <Canvas
         camera={{ position: [2, 4, 3.5] }}
@@ -40,9 +53,9 @@ export default function Home() {
         <ambientLight intensity={0.1} />
         <TopLight />
 
-        <WallLeft floorXZ={floorXZ} />
-        <WallFront floorXZ={floorXZ} />
-        <Floor floorXZ={floorXZ} floorStyle={floorStyle} />
+        <WallLeft floorXZ={floorXZ} planeStyle={leftWallStyle} />
+        <WallFront floorXZ={floorXZ} planeStyle={frontWallStyle} />
+        <Floor floorXZ={floorXZ} planeStyle={floorStyle} />
       </Canvas>
     </div>
   );

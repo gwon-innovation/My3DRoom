@@ -1,7 +1,7 @@
 /** @jsxImportSource @emotion/react */
 import { css } from "@emotion/react";
 import { Dispatch, SetStateAction } from "react";
-import { IFloorArea, IFloorStyle } from "models";
+import { IFloorArea, IPlaneStyle } from "models";
 import { ColorPicker } from "./ColorPicker";
 import { FloorSizeSlider } from "./FloorSizeSlider";
 import { FloorImageSelector } from "./FloorImageSelector";
@@ -9,15 +9,15 @@ import { FloorImageSelector } from "./FloorImageSelector";
 export interface IFloorControllerProps {
   floorXZ: IFloorArea;
   setFloorXZ: Dispatch<SetStateAction<IFloorArea>>;
-  floorStyle: IFloorStyle;
-  setFloorStyle: Dispatch<SetStateAction<IFloorStyle>>;
+  planeStyle: IPlaneStyle;
+  setPlaneStyle: Dispatch<SetStateAction<IPlaneStyle>>;
 }
 
 export function FloorController({
   floorXZ,
   setFloorXZ,
-  floorStyle,
-  setFloorStyle
+  planeStyle,
+  setPlaneStyle
 }: IFloorControllerProps) {
   const containerStyle = css({
     width: "100%",
@@ -40,10 +40,10 @@ export function FloorController({
       <FloorSizeSlider floorXZ={floorXZ} setFloorXZ={setFloorXZ} />
       <div css={{ height: "1rem" }} />
       <div css={floorButtonContainerStlye}>
-        <ColorPicker floorStyle={floorStyle} setFloorStyle={setFloorStyle} />
+        <ColorPicker planeStyle={planeStyle} setPlaneStyle={setPlaneStyle} />
         <FloorImageSelector
-          floorStyle={floorStyle}
-          setFloorStyle={setFloorStyle}
+          planeStyle={planeStyle}
+          setPlaneStyle={setPlaneStyle}
         />
       </div>
     </div>
