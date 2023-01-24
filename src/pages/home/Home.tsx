@@ -42,7 +42,7 @@ export default function Home() {
 
         <WallLeft floorXZ={floorXZ} />
         <WallFront floorXZ={floorXZ} />
-        <Floor floorXZ={floorXZ} />
+        <Floor floorXZ={floorXZ} floorStyle={floorStyle} />
       </Canvas>
     </div>
   );
