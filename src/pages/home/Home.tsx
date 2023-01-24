@@ -4,7 +4,7 @@ import { css } from "@emotion/react";
 import { useState } from "react";
 import { Canvas } from "@react-three/fiber";
 import { OrbitControls } from "@react-three/drei";
-import { IFloorArea } from "models";
+import { IFloorArea, IFloorStyle } from "models";
 import { Floor, WallFront, WallLeft } from "./planes";
 import { TopLight } from "./lights";
 import { Controller } from "./components";
@@ -13,6 +13,11 @@ export default function Home() {
   const [floorXZ, setFloorXZ] = useState<IFloorArea>({
     x: 3,
     z: 2.6
+  });
+  const [floorStyle, setFloorStyle] = useState<IFloorStyle>({
+    name: "",
+    src: "",
+    color: "#FFFFFF"
   });
 
   const containerStyle = css({
@@ -24,7 +29,9 @@ export default function Home() {
 
   return (
     <div css={containerStyle}>
-      <Controller floorProps={{ floorXZ, setFloorXZ }} />
+      <Controller
+        floorProps={{ floorXZ, setFloorXZ, floorStyle, setFloorStyle }}
+      />
       <Canvas
         camera={{ position: [2, 4, 3.5] }}
         gl={{ physicallyCorrectLights: true }}

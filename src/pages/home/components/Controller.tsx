@@ -28,6 +28,8 @@ export function Controller({ floorProps }: ControllerProps) {
       <FloorController
         floorXZ={floorProps.floorXZ}
         setFloorXZ={floorProps.setFloorXZ}
+        floorStyle={floorProps.floorStyle}
+        setFloorStyle={floorProps.setFloorStyle}
       />
     </div>
   );

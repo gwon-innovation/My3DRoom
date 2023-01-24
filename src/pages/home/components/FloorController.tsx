@@ -1,17 +1,29 @@
 /** @jsxImportSource @emotion/react */
 import { css } from "@emotion/react";
-import { IFloorArea } from "models";
+import { IFloorArea, IFloorStyle } from "models";
 import { ChangeEvent, Dispatch, SetStateAction } from "react";
+import floor1 from "assets/images/floor1.jpg";
+import floor2 from "assets/images/floor2.jpg";
+import floor3 from "assets/images/floor3.jpg";
 
 export interface IFloorControllerProps {
   floorXZ: IFloorArea;
   setFloorXZ: Dispatch<SetStateAction<IFloorArea>>;
+  floorStyle: IFloorStyle;
+  setFloorStyle: Dispatch<SetStateAction<IFloorStyle>>;
 }
 
 export function FloorController({
   floorXZ,
-  setFloorXZ
+  setFloorXZ,
+  floorStyle,
+  setFloorStyle
 }: IFloorControllerProps) {
+  const FLOOR_STYLES = [
+    { name: "floor1", src: floor1, color: "" },
+    { name: "floor2", src: floor2, color: "" },
+    { name: "floor3", src: floor3, color: "" }
+  ];
   const handleInputX = (e: ChangeEvent<HTMLInputElement>) => {
     const { value } = e.target;
     setFloorXZ({ x: Number(value), z: floorXZ.z });
@@ -33,6 +45,20 @@ export function FloorController({
   const flexRow = css({
     display: "flex",
     alignItems: "center"
+  });
+  const floorButtonContainerStlye = css(flexRow, {
+    width: "100%",
+    justifyContent: "space-evenly"
+  });
+  const floorButtonStyle = css({
+    width: "4rem",
+    height: "4rem",
+    padding: 0,
+    border: "none",
+    background: "none"
+  });
+  const floorButtonSelectedStyle = css(floorButtonStyle, {
+    border: "4px solid #FFFFFF"
   });
 
   return (
@@ -64,6 +90,22 @@ export function FloorController({
         />
         <div css={{ width: "1rem" }} />
         <p>{floorXZ.z}</p>
+      </div>
+      <div css={floorButtonContainerStlye}>
+        {FLOOR_STYLES.map((floor) => (
+          <button
+            key={floor.name}
+            onClick={() => setFloorStyle(floor)}
+            type="button"
+            css={
+              floorStyle.name === floor.name
+                ? floorButtonSelectedStyle
+                : floorButtonStyle
+            }
+          >
+            <img src={floor.src} alt="Floor1" width="100%" height="100%" />
+          </button>
+        ))}
       </div>
     </div>
   );
