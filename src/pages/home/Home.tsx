@@ -7,6 +7,7 @@ import { OrbitControls } from "@react-three/drei";
 import { IFloorArea } from "models";
 import { Floor, WallFront, WallLeft } from "./planes";
 import { TopLight } from "./lights";
+import { Controller } from "./components";
 
 export default function Home() {
   const [floorXZ, setFloorXZ] = useState<IFloorArea>({
@@ -23,6 +24,7 @@ export default function Home() {
 
   return (
     <div css={containerStyle}>
+      <Controller floorProps={{ floorXZ, setFloorXZ }} />
       <Canvas camera={{ position: [2, 4, 3.5] }}>
         <OrbitControls />
         <ambientLight intensity={0.1} />
