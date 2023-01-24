@@ -38,7 +38,7 @@ export function ColorPicker({ planeStyle, setPlaneStyle }: IColorPickerProps) {
   const popoverStyle = css({
     position: "relative",
     top: "4rem",
-    left: "-3rem"
+    left: "-4rem"
   });
   const coverStyle = css({
     position: "fixed",
