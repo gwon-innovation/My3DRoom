@@ -41,7 +41,13 @@ export function FloorImageSelector({
       {FLOOR_STYLES.map((floor) => (
         <button
           key={floor.name}
-          onClick={() => setPlaneStyle(floor)}
+          onClick={() =>
+            setPlaneStyle({
+              name: floor.name,
+              src: floor.src,
+              color: planeStyle.color
+            })
+          }
           type="button"
           css={
             planeStyle.name === floor.name ? selectedButtonStyle : buttonStyle
