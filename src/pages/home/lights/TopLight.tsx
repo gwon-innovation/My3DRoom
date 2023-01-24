@@ -9,5 +9,12 @@ export function TopLight() {
   // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
   const topLightRef = useRef<THREE.PointLight>(null!);
   useHelper(topLightRef, THREE.PointLightHelper, 1, "red");
-  return <pointLight ref={topLightRef} position={[0, FLOOR_HEIGHT, 0]} />;
+  return (
+    <pointLight
+      ref={topLightRef}
+      position={[0, FLOOR_HEIGHT, 0]}
+      intensity={1}
+      power={300}
+    />
+  );
 }

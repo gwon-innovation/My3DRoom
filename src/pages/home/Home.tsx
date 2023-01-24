@@ -25,7 +25,10 @@ export default function Home() {
   return (
     <div css={containerStyle}>
       <Controller floorProps={{ floorXZ, setFloorXZ }} />
-      <Canvas camera={{ position: [2, 4, 3.5] }}>
+      <Canvas
+        camera={{ position: [2, 4, 3.5] }}
+        gl={{ physicallyCorrectLights: true }}
+      >
         <OrbitControls />
         <ambientLight intensity={0.1} />
         <TopLight />
