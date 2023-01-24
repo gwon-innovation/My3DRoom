@@ -14,7 +14,7 @@ export default function Home() {
     x: 3,
     z: 2.6
   });
-  const [planeStyle, setPlaneStyle] = useState<IPlaneStyle>(EMPTY_PLANE_STYLE);
+  const [floorStyle, setFloorStyle] = useState<IPlaneStyle>(EMPTY_PLANE_STYLE);
   const [leftWallStyle, setLeftWallStyle] =
     useState<IPlaneStyle>(EMPTY_PLANE_STYLE);
   const [frontWallStyle, setFrontWallStyle] =
@@ -30,7 +30,12 @@ export default function Home() {
   return (
     <div css={containerStyle}>
       <Controller
-        floorProps={{ floorXZ, setFloorXZ, planeStyle, setPlaneStyle }}
+        floorProps={{
+          floorXZ,
+          setFloorXZ,
+          planeStyle: floorStyle,
+          setPlaneStyle: setFloorStyle
+        }}
         leftWallProps={{
           planeStyle: leftWallStyle,
           setPlaneStyle: setLeftWallStyle
@@ -50,7 +55,7 @@ export default function Home() {
 
         <WallLeft floorXZ={floorXZ} planeStyle={leftWallStyle} />
         <WallFront floorXZ={floorXZ} planeStyle={frontWallStyle} />
-        <Floor floorXZ={floorXZ} planeStyle={planeStyle} />
+        <Floor floorXZ={floorXZ} planeStyle={floorStyle} />
       </Canvas>
     </div>
   );
