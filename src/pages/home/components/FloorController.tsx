@@ -1,11 +1,12 @@
 /** @jsxImportSource @emotion/react */
 import { css } from "@emotion/react";
-import { ChangeEvent, Dispatch, SetStateAction } from "react";
+import { Dispatch, SetStateAction } from "react";
 import { IFloorArea, IFloorStyle } from "models";
 import floor1 from "assets/images/floor1.jpg";
 import floor2 from "assets/images/floor2.jpg";
 import floor3 from "assets/images/floor3.jpg";
 import { ColorPicker } from "./ColorPicker";
+import { FloorSizeSlider } from "./FloorSizeSlider";
 
 export interface IFloorControllerProps {
   floorXZ: IFloorArea;
@@ -25,15 +26,6 @@ export function FloorController({
     { name: "floor2", src: floor2, color: "" },
     { name: "floor3", src: floor3, color: "" }
   ];
-
-  const handleInputX = (e: ChangeEvent<HTMLInputElement>) => {
-    const { value } = e.target;
-    setFloorXZ({ x: Number(value), z: floorXZ.z });
-  };
-  const handleInputY = (e: ChangeEvent<HTMLInputElement>) => {
-    const { value } = e.target;
-    setFloorXZ({ x: floorXZ.x, z: Number(value) });
-  };
 
   const containerStyle = css({
     width: "100%",
@@ -65,34 +57,7 @@ export function FloorController({
 
   return (
     <div css={containerStyle}>
-      <div css={flexRow}>
-        <p>x </p>
-        <div css={{ width: "1rem" }} />
-        <input
-          onChange={handleInputX}
-          type="range"
-          min={1}
-          max={10}
-          step={0.1}
-          value={floorXZ.x}
-        />
-        <div css={{ width: "1rem" }} />
-        <p>{floorXZ.x}</p>
-      </div>
-      <div css={flexRow}>
-        <p>y </p>
-        <div css={{ width: "1rem" }} />
-        <input
-          onChange={handleInputY}
-          type="range"
-          min={1}
-          max={10}
-          step={0.1}
-          value={floorXZ.z}
-        />
-        <div css={{ width: "1rem" }} />
-        <p>{floorXZ.z}</p>
-      </div>
+      <FloorSizeSlider floorXZ={floorXZ} setFloorXZ={setFloorXZ} />
       <div css={{ height: "1rem" }} />
       <div css={floorButtonContainerStlye}>
         <ColorPicker floorStyle={floorStyle} setFloorStyle={setFloorStyle} />
