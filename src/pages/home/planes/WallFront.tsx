@@ -8,7 +8,7 @@ export function WallFront({ floorXZ }: { floorXZ: IFloorArea }) {
       position={[
         -THICKNESS / 2,
         FLOOR_HEIGHT / 2 - THICKNESS / 2,
-        -floorXZ.z / 2
+        -floorXZ.z / 2 - THICKNESS / 2
       ]}
     >
       <boxGeometry
