@@ -53,7 +53,7 @@ export function FloorImageSelector({
             planeStyle.name === floor.name ? selectedButtonStyle : buttonStyle
           }
         >
-          <img src={floor.src} alt="Floor1" width="100%" height="100%" />
+          <img src={floor.src} alt={floor.name} width="100%" height="100%" />
         </button>
       ))}
     </div>
