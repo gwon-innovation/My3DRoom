@@ -3,3 +3,5 @@ export interface IPlaneStyle {
   src: string;
   color: string;
 }
+
+export const EMPTY_PLANE_STYLE = { name: "", src: "", color: "#FFFFFF" };

@@ -4,7 +4,7 @@ import { css } from "@emotion/react";
 import { useState } from "react";
 import { Canvas } from "@react-three/fiber";
 import { OrbitControls } from "@react-three/drei";
-import { IFloorArea, IPlaneStyle } from "models";
+import { EMPTY_PLANE_STYLE, IFloorArea, IPlaneStyle } from "models";
 import { Floor, WallFront, WallLeft } from "./planes";
 import { TopLight } from "./lights";
 import { Controller } from "./components";
@@ -14,21 +14,11 @@ export default function Home() {
     x: 3,
     z: 2.6
   });
-  const [planeStyle, setPlaneStyle] = useState<IPlaneStyle>({
-    name: "",
-    src: "",
-    color: "#FFFFFF"
-  });
-  const [leftWallStyle, setLeftWallStyle] = useState<IPlaneStyle>({
-    name: "",
-    src: "",
-    color: "#FFFFFF"
-  });
-  const [frontWallStyle, setFrontWallStyle] = useState<IPlaneStyle>({
-    name: "",
-    src: "",
-    color: "#FFFFFF"
-  });
+  const [planeStyle, setPlaneStyle] = useState<IPlaneStyle>(EMPTY_PLANE_STYLE);
+  const [leftWallStyle, setLeftWallStyle] =
+    useState<IPlaneStyle>(EMPTY_PLANE_STYLE);
+  const [frontWallStyle, setFrontWallStyle] =
+    useState<IPlaneStyle>(EMPTY_PLANE_STYLE);
 
   const containerStyle = css({
     width: "100%",
