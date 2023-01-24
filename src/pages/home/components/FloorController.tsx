@@ -1,10 +1,11 @@
 /** @jsxImportSource @emotion/react */
 import { css } from "@emotion/react";
-import { IFloorArea, IFloorStyle } from "models";
 import { ChangeEvent, Dispatch, SetStateAction } from "react";
+import { IFloorArea, IFloorStyle } from "models";
 import floor1 from "assets/images/floor1.jpg";
 import floor2 from "assets/images/floor2.jpg";
 import floor3 from "assets/images/floor3.jpg";
+import { ColorPicker } from "./ColorPicker";
 
 export interface IFloorControllerProps {
   floorXZ: IFloorArea;
@@ -24,6 +25,7 @@ export function FloorController({
     { name: "floor2", src: floor2, color: "" },
     { name: "floor3", src: floor3, color: "" }
   ];
+
   const handleInputX = (e: ChangeEvent<HTMLInputElement>) => {
     const { value } = e.target;
     setFloorXZ({ x: Number(value), z: floorXZ.z });
@@ -51,8 +53,8 @@ export function FloorController({
     justifyContent: "space-evenly"
   });
   const floorButtonStyle = css({
-    width: "4rem",
-    height: "4rem",
+    width: "3rem",
+    height: "3rem",
     padding: 0,
     border: "none",
     background: "none"
@@ -91,7 +93,9 @@ export function FloorController({
         <div css={{ width: "1rem" }} />
         <p>{floorXZ.z}</p>
       </div>
+      <div css={{ height: "1rem" }} />
       <div css={floorButtonContainerStlye}>
+        <ColorPicker floorStyle={floorStyle} setFloorStyle={setFloorStyle} />
         {FLOOR_STYLES.map((floor) => (
           <button
             key={floor.name}
