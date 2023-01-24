@@ -29,7 +29,7 @@ function WallLeftWithImage({ floorXZ, planeStyle }: WallLeftProps) {
       <meshStandardMaterial
         attach="material"
         roughness={0.5}
-        metalness={0.5}
+        metalness={0}
         map={colorMap || null}
       />
     </mesh>
@@ -55,7 +55,7 @@ export function WallLeft({ floorXZ, planeStyle }: WallLeftProps) {
       <meshStandardMaterial
         attach="material"
         roughness={0.5}
-        metalness={0.5}
+        metalness={0}
         color={planeStyle.color}
       />
     </mesh>
