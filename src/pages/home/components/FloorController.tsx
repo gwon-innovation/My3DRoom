@@ -1,26 +1,24 @@
 /** @jsxImportSource @emotion/react */
 import { css } from "@emotion/react";
-import { IFloorArea } from "models";
-import { ChangeEvent, Dispatch, SetStateAction } from "react";
+import { Dispatch, SetStateAction } from "react";
+import { IFloorArea, IFloorStyle } from "models";
+import { ColorPicker } from "./ColorPicker";
+import { FloorSizeSlider } from "./FloorSizeSlider";
+import { FloorImageSelector } from "./FloorImageSelector";
 
 export interface IFloorControllerProps {
   floorXZ: IFloorArea;
   setFloorXZ: Dispatch<SetStateAction<IFloorArea>>;
+  floorStyle: IFloorStyle;
+  setFloorStyle: Dispatch<SetStateAction<IFloorStyle>>;
 }
 
 export function FloorController({
   floorXZ,
-  setFloorXZ
+  setFloorXZ,
+  floorStyle,
+  setFloorStyle
 }: IFloorControllerProps) {
-  const handleInputX = (e: ChangeEvent<HTMLInputElement>) => {
-    const { value } = e.target;
-    setFloorXZ({ x: Number(value), z: floorXZ.z });
-  };
-  const handleInputY = (e: ChangeEvent<HTMLInputElement>) => {
-    const { value } = e.target;
-    setFloorXZ({ x: floorXZ.x, z: Number(value) });
-  };
-
   const containerStyle = css({
     width: "100%",
     height: "fit-content",
@@ -30,40 +28,23 @@ export function FloorController({
     borderRadius: "1rem",
     margin: "0.4rem 0"
   });
-  const flexRow = css({
+  const floorButtonContainerStlye = css({
     display: "flex",
-    alignItems: "center"
+    alignItems: "center",
+    width: "100%",
+    justifyContent: "space-evenly"
   });
 
   return (
     <div css={containerStyle}>
-      <div css={flexRow}>
-        <p>x </p>
-        <div css={{ width: "1rem" }} />
-        <input
-          onChange={handleInputX}
-          type="range"
-          min={1}
-          max={10}
-          step={0.1}
-          value={floorXZ.x}
+      <FloorSizeSlider floorXZ={floorXZ} setFloorXZ={setFloorXZ} />
+      <div css={{ height: "1rem" }} />
+      <div css={floorButtonContainerStlye}>
+        <ColorPicker floorStyle={floorStyle} setFloorStyle={setFloorStyle} />
+        <FloorImageSelector
+          floorStyle={floorStyle}
+          setFloorStyle={setFloorStyle}
         />
-        <div css={{ width: "1rem" }} />
-        <p>{floorXZ.x}</p>
-      </div>
-      <div css={flexRow}>
-        <p>y </p>
-        <div css={{ width: "1rem" }} />
-        <input
-          onChange={handleInputY}
-          type="range"
-          min={1}
-          max={10}
-          step={0.1}
-          value={floorXZ.z}
-        />
-        <div css={{ width: "1rem" }} />
-        <p>{floorXZ.z}</p>
       </div>
     </div>
   );
