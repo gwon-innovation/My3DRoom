@@ -6,7 +6,7 @@ import { Canvas } from "@react-three/fiber";
 import { OrbitControls } from "@react-three/drei";
 import { IFloorArea } from "models";
 import { Floor, WallFront, WallLeft } from "./planes";
-import { TopLight } from "./lights/TopLight";
+import { TopLight } from "./lights";
 
 export default function Home() {
   const [floorXZ, setFloorXZ] = useState<IFloorArea>({
